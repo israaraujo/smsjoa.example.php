@@ -36,7 +36,10 @@ class MessagingService
 
 			if($postdata){
 				foreach($postdata as $k => $v){
+					if( $k == "msg" || $k == "subject" ){
+						$v = urlencode($v);
 						$temp[] = $k."=".$v;
+					}
 				}
 				$postdata = implode($temp,"&");
 			}
@@ -67,7 +70,7 @@ class MessagingService
 
 		if($http_status != 200){
 			throw new APIException($responseJson);
-			//¿À·ùÄÚµå ¹è¿­·Î ¼ö½Å
+			//Â¿Ã€Â·Ã¹Ã„ÃšÂµÃ¥ Â¹Ã¨Â¿Â­Â·ÃŽ Â¼Ã¶Â½Ã…
 			//$result = new APIException($responseJson);
 			//$returnResult = $result->toArray();
 		}else{
