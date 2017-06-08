@@ -36,11 +36,10 @@ class MessagingService
 
 			if($postdata){
 				foreach($postdata as $k => $v){
-					if( $k == "msg" || $k == "subject" ){
-						$v = urlencode($v);
-						$temp[] = $k."=".$v;
-					}
+					if( $k == "msg" || $k == "subject" ) $v = urlencode($v);
+					$temp[] = $k."=".$v;				
 				}
+				
 				$postdata = implode($temp,"&");
 			}
 		}
